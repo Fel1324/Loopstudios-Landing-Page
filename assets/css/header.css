@@ -1,0 +1,34 @@
+.header{
+    background: url('../img/mobile/image-hero.jpg') no-repeat top center / cover;
+    
+    width: 100%;
+    height: 100vh;
+}
+
+#header__content{
+    padding-block: 4rem;
+
+    display: grid;
+
+    height: 100%;
+}
+
+#header__content div:first-child{
+    align-self: flex-start;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header__content div:last-child{
+    align-self: start;
+
+    border: .2rem solid var(--primary-color);
+
+    padding: 2rem;
+}
+
+.header__title{
+    font-size: 4rem;
+}

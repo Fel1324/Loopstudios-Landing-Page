@@ -1,0 +1,25 @@
+.main{
+    width: 100%;
+}
+
+#main__content{
+    padding-block: 9.6rem;
+}
+
+.main__introduction{
+    text-align: center;
+}
+
+.introduction__img{
+    width: 100%;
+
+    margin-bottom: 2rem;
+}
+
+.introduction__title{
+    margin-block: 1.8rem;
+}
+
+.introduction__paragraph{
+    color: var(--paragraph-color);
+}
