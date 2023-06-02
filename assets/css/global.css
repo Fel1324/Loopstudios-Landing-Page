@@ -67,5 +67,10 @@ p{
 
 .title{
     color: var(--secondary-color);
+    
     font-size: 3.2rem;
+}
+
+img{
+    vertical-align: top;
 }
