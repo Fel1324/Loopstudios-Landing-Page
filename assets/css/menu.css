@@ -1,0 +1,30 @@
+.menu{
+    width: 100%;
+    height: 100vh;
+
+    background-color: var(--secondary-color);
+    color: var(--dark-paragraph-color);
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+
+    overflow: auto;
+
+    transition: transform .3s ease-in-out;
+}
+
+.menu-open{
+    transform: translateY(0%);
+}
+
+#menu__content{
+    padding-block: 4rem;
+}
+
+.menu__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

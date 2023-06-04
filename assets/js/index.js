@@ -2,8 +2,12 @@ const headerContent = document.querySelector('div#header__content');
 const mainContent = document.querySelector('div#main__content');
 const footerContent = document.querySelector('div#footer__content');
 
+const menu = document.querySelector('aside.menu');
+const menuContent = document.querySelector('div#menu__content');
+
+const buttonClose = 'assets/img/icon-close.svg';
 const logo = 'assets/img/logo.svg';
-const menu = 'assets/img/icon-hamburger.svg';
+const buttonOpen = 'assets/img/icon-hamburger.svg';
 const introductionImg = 'assets/img/mobile/image-interactive.jpg';
 
 // GENERIC FUNCTIONS
@@ -18,8 +22,8 @@ function createHeaderContent(logo, menu){
         <div>
             ${createImg('logo', logo, 'logo da loopstudios')}
 
-            <button class="header__button button-open">
-                ${createImg('', menu, 'Botão que abri o menu lateral')}
+            <button onclick="openMenu()" class="header__button button-open">
+                ${createImg('', menu, 'Botão que abre o menu lateral')}
             </button>    
         </div>
 
@@ -126,6 +130,7 @@ function createSectionCreations(){
     `;
 }
 
+// CREATE MAIN CONTENT
 function createMainContent(){
     return createSectionIntroduction(introductionImg) + createSectionCreations();
 }
@@ -149,13 +154,53 @@ function createLinksFooter(links){
             <li class="footer__item">
                 <a href="#!" class="footer__link">${link}</a>
             </li>
-        `
+        `;
     });
 
     const htmlLinkValue = 0;
     return htmlLinkValue.innerHTML = linkValue;
 }
 
+const socialLinksFooter = [
+    {
+        src: 'assets/img/icon-facebook.svg',
+        alt: 'Abrir Facebook'
+    },
+
+    {
+        src: 'assets/img/icon-twitter.svg',
+        alt: 'Abrir Twitter'
+    },
+
+    {
+        src: 'assets/img/icon-pinterest.svg',
+        alt: 'Abrir Pinterest'
+    },
+    
+    {
+        src: 'assets/img/icon-instagram.svg',
+        alt: 'Abrir Instagram'
+    }
+];
+
+function createSocialLinksFooter(socialLinks){
+    let socialLinkValue = '';
+
+    socialLinks.forEach(socialLink => {
+        socialLinkValue += `
+            <li class="social-links__item">
+                <a href="#!" class="social-links__link">
+                    <img class="social-links__img" src="${socialLink.src}" alt="${socialLink.alt}">
+                </a>
+            </li>
+        `;
+    });
+
+    const htmlSocialLinkValue = 0;
+    return htmlSocialLinkValue.innerHTML = socialLinkValue;
+}
+
+// CREATE FOOTER CONTENT
 function createFooterContent(logo){
     return `
         <div class="footer__col-a">
@@ -167,11 +212,51 @@ function createFooterContent(logo){
         </div>
 
         <div class="footer__col-b">
+            <ul class="footer__social-links">
+                ${createSocialLinksFooter(socialLinksFooter)}
+            </ul>
+
             <p class="footer__copy">© 2021 Loopstudios. All rights reserved.</p>
         </div>
     `
 }
+// -----------------------
 
-headerContent.innerHTML = createHeaderContent(logo, menu);
+headerContent.innerHTML = createHeaderContent(logo, buttonOpen);
 mainContent.innerHTML = createMainContent();
 footerContent.innerHTML = createFooterContent(logo);
+
+// MENU LATERAL
+function createMenuContent(logo, menu){
+    return `
+        <div class="menu__header">
+            ${createImg('logo', logo, 'logo da loopstudios')}
+
+            <button onclick="closeMenu()" class="menu__button button-close">
+                ${createImg('', menu, 'Botão que fecha o menu lateral')}
+            </button>
+        </div>
+
+        <ul class="menu__list">
+            
+        </ul>
+    `
+}
+
+function openMenu(){
+    menu.classList.add('menu-open');
+
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.main').style.display = 'none';
+    document.querySelector('.footer').style.display = 'none';
+}
+
+function closeMenu(){
+    menu.classList.remove('menu-open');
+
+    document.body.style.overflow = 'auto';
+    document.querySelector('.main').style.display = 'block';
+    document.querySelector('.footer').style.display = 'block';
+}
+
+menuContent.innerHTML = createMenuContent(logo, buttonClose);

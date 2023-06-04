@@ -57,7 +57,8 @@ a{
     text-decoration: none;
 }
 
-.button-open img{
+.button-open img,
+.button-close img{
     width: 3rem;
 }
 

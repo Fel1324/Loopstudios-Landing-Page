@@ -14,11 +14,21 @@
     flex-direction: column;
     gap: 1.8rem;
 
-    margin-block: 3.2rem;
+    margin-top: 3.4rem;
+    margin-bottom: 4.8rem;
 }
 
 .footer__link{
     color: var(--primary-color);
+}
+
+.footer__social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+
+    margin-bottom: 2rem;
 }
 
 .footer__copy{
