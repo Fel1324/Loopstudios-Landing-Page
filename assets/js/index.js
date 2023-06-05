@@ -5,25 +5,47 @@ const footerContent = document.querySelector('div#footer__content');
 const menu = document.querySelector('aside.menu');
 const menuContent = document.querySelector('div#menu__content');
 
-const buttonClose = 'assets/img/icon-close.svg';
-const logo = 'assets/img/logo.svg';
-const buttonOpen = 'assets/img/icon-hamburger.svg';
-const introductionImg = 'assets/img/mobile/image-interactive.jpg';
+// CREATE LINKS
+const linksSite = [
+    'About',
+    'Careers',
+    'Events',
+    'Products',
+    'Support'
+];
 
-// GENERIC FUNCTIONS
-function createImg(className, img, alt){
-    return `<img class="${className}" src="${img}" alt="${alt}">`;
+defineClassNameLinkSite = function(classLink){
+    return classLink;
+}
+
+defineClassNameItemSite = function(classItem){
+    return classItem;
+}
+
+function createLinksSite(links, classNameItem, classNameLink){
+    let linkValue = '';
+
+    links.forEach(link => {
+        linkValue += `
+            <li class="${defineClassNameItemSite(classNameItem)}">
+                <a href="#!" class="${defineClassNameLinkSite(classNameLink)}">${link}</a>
+            </li>
+        `;
+    });
+
+    const htmlLinkValue = 0;
+    return htmlLinkValue.innerHTML = linkValue;
 }
 // -----------------------
 
 // HEADER
-function createHeaderContent(logo, menu){
+function createHeaderContent(){
     return `
         <div>
-            ${createImg('logo', logo, 'logo da loopstudios')}
+            <img class="logo" src="assets/img/logo.svg" alt="logo da LoopStudios">
 
             <button onclick="openMenu()" class="header__button button-open">
-                ${createImg('', menu, 'Botão que abre o menu lateral')}
+                <img src="assets/img/icon-hamburger.svg" alt="Botão que abre o menu lateral">
             </button>    
         </div>
 
@@ -32,14 +54,52 @@ function createHeaderContent(logo, menu){
         </div>
     `;
 }
+
+headerContent.innerHTML = createHeaderContent();
+// -----------------------
+
+// MENU LATERAL
+function createMenuContent(){
+    return `
+        <div class="menu__header">
+            <img class="logo" src="assets/img/logo.svg" alt="logo da LoopStudios">
+
+            <button onclick="closeMenu()" class="menu__button button-close">
+                <img src="assets/img/icon-close.svg" alt="Botão que fecha o menu lateral">
+            </button>
+        </div>
+
+        <ul class="menu__list">
+            ${createLinksSite(linksSite, 'menu__item', 'menu__link')}
+        </ul>
+    `
+}
+
+function openMenu(){
+    menu.classList.add('menu-open');
+
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.main').style.display = 'none';
+    document.querySelector('.footer').style.display = 'none';
+}
+
+function closeMenu(){
+    menu.classList.remove('menu-open');
+
+    document.body.style.overflow = 'auto';
+    document.querySelector('.main').style.display = 'block';
+    document.querySelector('.footer').style.display = 'block';
+}
+
+menuContent.innerHTML = createMenuContent();
 // -----------------------
 
 // MAIN
 // PRIMARY SECTION
-function createSectionIntroduction(source){
+function createSectionIntroduction(){
     return `
         <section class="main__introduction">
-            ${createImg('introduction__img', source, '')}
+            <img class="introduction__img" src="assets/img/mobile/image-interactive.jpg" alt="">
 
             <h2 class="introduction__title title">The leader in interactive VR</h2>
 
@@ -103,7 +163,7 @@ function createItemsCreations(objs){
     objs.forEach(obj => {
         objValue += `
             <li class="creations__item">
-                <a href="#!" class="creations__link">
+                <a href="#!" class="creations__item-link">
                     <h3 class="creations__item-title">${obj.title}</h3>
                     <img class="creations__item-img" src="${obj.imgSrc}" alt="${obj.title}">
                 </a>
@@ -132,35 +192,13 @@ function createSectionCreations(){
 
 // CREATE MAIN CONTENT
 function createMainContent(){
-    return createSectionIntroduction(introductionImg) + createSectionCreations();
+    return createSectionIntroduction() + createSectionCreations();
 }
+
+mainContent.innerHTML = createMainContent();
 // -----------------------
 
 // FOOTER
-// CREATE LINKS
-const linksFooter = [
-    'About',
-    'Careers',
-    'Events',
-    'Products',
-    'Support'
-];
-
-function createLinksFooter(links){
-    let linkValue = '';
-
-    links.forEach(link => {
-        linkValue += `
-            <li class="footer__item">
-                <a href="#!" class="footer__link">${link}</a>
-            </li>
-        `;
-    });
-
-    const htmlLinkValue = 0;
-    return htmlLinkValue.innerHTML = linkValue;
-}
-
 const socialLinksFooter = [
     {
         src: 'assets/img/icon-facebook.svg',
@@ -201,13 +239,13 @@ function createSocialLinksFooter(socialLinks){
 }
 
 // CREATE FOOTER CONTENT
-function createFooterContent(logo){
+function createFooterContent(){
     return `
         <div class="footer__col-a">
-            ${createImg('logo', logo, 'logo da loopstudios')}
+            <img class="logo" src="assets/img/logo.svg" alt="logo da LoopStudios">
 
             <ul class="footer__list">
-                ${createLinksFooter(linksFooter)}
+                ${createLinksSite(linksSite, 'footer__item', 'footer__link')}
             </ul>
         </div>
 
@@ -220,43 +258,6 @@ function createFooterContent(logo){
         </div>
     `
 }
+
+footerContent.innerHTML = createFooterContent();
 // -----------------------
-
-headerContent.innerHTML = createHeaderContent(logo, buttonOpen);
-mainContent.innerHTML = createMainContent();
-footerContent.innerHTML = createFooterContent(logo);
-
-// MENU LATERAL
-function createMenuContent(logo, menu){
-    return `
-        <div class="menu__header">
-            ${createImg('logo', logo, 'logo da loopstudios')}
-
-            <button onclick="closeMenu()" class="menu__button button-close">
-                ${createImg('', menu, 'Botão que fecha o menu lateral')}
-            </button>
-        </div>
-
-        <ul class="menu__list">
-            
-        </ul>
-    `
-}
-
-function openMenu(){
-    menu.classList.add('menu-open');
-
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.main').style.display = 'none';
-    document.querySelector('.footer').style.display = 'none';
-}
-
-function closeMenu(){
-    menu.classList.remove('menu-open');
-
-    document.body.style.overflow = 'auto';
-    document.querySelector('.main').style.display = 'block';
-    document.querySelector('.footer').style.display = 'block';
-}
-
-menuContent.innerHTML = createMenuContent(logo, buttonClose);
