@@ -8,6 +8,7 @@
     top: 0;
     right: 0;
     transform: translateX(100%);
+    z-index: 2;
 
     overflow: auto;
 
@@ -20,7 +21,6 @@
 
 #menu__content{
     padding-block: 4rem;
-    padding-inline: 3rem;
 
     display: grid;
 
@@ -50,4 +50,10 @@
     font-family: var(--title-font);
     font-weight: 400;
     font-size: 2.2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .menu{
+        width: 50%;
+    }
 }

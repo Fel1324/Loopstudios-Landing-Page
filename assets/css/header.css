@@ -7,7 +7,6 @@
 
 #header__content{
     padding-block: 4rem;
-    padding-inline: 3rem;
 
     display: grid;
 
@@ -28,6 +27,8 @@
     border: .2rem solid var(--primary-color);
 
     max-width: 43.5rem;
+
+    margin-inline: auto;
 
     padding: 2rem;
 }

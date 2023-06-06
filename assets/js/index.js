@@ -2,6 +2,7 @@ const headerContent = document.querySelector('div#header__content');
 const mainContent = document.querySelector('div#main__content');
 const footerContent = document.querySelector('div#footer__content');
 
+const overlay = document.querySelector('div#overlay');
 const menu = document.querySelector('aside.menu');
 const menuContent = document.querySelector('div#menu__content');
 
@@ -78,6 +79,8 @@ function createMenuContent(){
 function openMenu(){
     menu.classList.add('menu-open');
 
+    overlay.style.display = 'block';
+
     document.body.style.overflow = 'hidden';
     document.querySelector('.main').style.display = 'none';
     document.querySelector('.footer').style.display = 'none';
@@ -85,6 +88,8 @@ function openMenu(){
 
 function closeMenu(){
     menu.classList.remove('menu-open');
+
+    overlay.style.display = 'none';
 
     document.body.style.overflow = 'auto';
     document.querySelector('.main').style.display = 'block';
@@ -99,16 +104,18 @@ menuContent.innerHTML = createMenuContent();
 function createSectionIntroduction(){
     return `
         <section class="main__introduction">
-            <img class="introduction__img" src="assets/img/mobile/image-interactive.jpg" alt="">
+            <div class="introduction__content">
+                <img class="introduction__img" src="assets/img/mobile/image-interactive.jpg" alt="">
 
-            <h2 class="introduction__title title">The leader in interactive VR</h2>
+                <h2 class="introduction__title title">The leader in interactive VR</h2>
 
-            <p class="introduction__paragraph">
-                Founded in 2011, Loopstudios has been producing world-class virtual reality 
-                projects for some of the best companies around the globe. Our award-winning 
-                creations have transformed businesses through digital experiences that bind 
-                to their brand.
-            </p>
+                <p class="introduction__paragraph">
+                    Founded in 2011, Loopstudios has been producing world-class virtual reality 
+                    projects for some of the best companies around the globe. Our award-winning 
+                    creations have transformed businesses through digital experiences that bind 
+                    to their brand.
+                </p>
+            </div>
         </section>
     `;
 }
