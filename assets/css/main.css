@@ -206,7 +206,7 @@
     }
 }
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1360px) {
     /* INTRODUCTION */
     .introduction__content{
         grid-template-columns: 2fr 1fr;
