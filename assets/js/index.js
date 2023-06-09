@@ -40,6 +40,16 @@ function createLinksSite(links, classNameItem, classNameLink){
 // -----------------------
 
 // HEADER
+function createNavigationDesktop(){
+    return `
+        <nav class="header__navigation">
+            <ul class="header__list">
+                ${createLinksSite(linksSite, 'header__item', 'header__link')}
+            </ul>
+        </nav>
+    `;
+}
+
 function createHeaderContent(){
     return `
         <div>
@@ -48,6 +58,8 @@ function createHeaderContent(){
             <button onclick="openMenu()" class="header__button button-open">
                 <img src="assets/img/icon-hamburger.svg" alt="Botão que abre o menu lateral">
             </button>    
+
+            ${createNavigationDesktop()}
         </div>
 
         <div>
@@ -105,16 +117,23 @@ function createSectionIntroduction(){
     return `
         <section class="main__introduction">
             <div class="introduction__content">
-                <img class="introduction__img" src="assets/img/mobile/image-interactive.jpg" alt="">
+                <div class="introduction__col-a">
+                    <picture>
+                        <source srcset="assets/img/desktop/image-interactive.jpg" media="(min-width: 1024px)">
+                        <img class="introduction__img" src="assets/img/mobile/image-interactive.jpg" alt="">
+                    </picture>
+                </div>
 
-                <h2 class="introduction__title title">The leader in interactive VR</h2>
+                <div class="introduction__col-b">
+                    <h2 class="introduction__title title">The leader in interactive VR</h2>
 
-                <p class="introduction__paragraph">
-                    Founded in 2011, Loopstudios has been producing world-class virtual reality 
-                    projects for some of the best companies around the globe. Our award-winning 
-                    creations have transformed businesses through digital experiences that bind 
-                    to their brand.
-                </p>
+                    <p class="introduction__paragraph">
+                        Founded in 2011, Loopstudios has been producing world-class virtual reality 
+                        projects for some of the best companies around the globe. Our award-winning 
+                        creations have transformed businesses through digital experiences that bind 
+                        to their brand.
+                    </p>
+                </div>
             </div>
         </section>
     `;
@@ -125,41 +144,49 @@ function createSectionIntroduction(){
 const itemsCreations = [
     {
         imgSrc: 'assets/img/mobile/image-deep-earth.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-deep-earth.jpg',
         title: 'Deep <br> earth'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-night-arcade.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-night-arcade.jpg',
         title: 'Night <br> arcade'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-soccer-team.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-soccer-team.jpg',
         title: 'Soccer <br> team vr'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-grid.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-grid.jpg',
         title: 'The <br> grid'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-from-above.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-from-above.jpg',
         title: 'From up <br> above vr'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-pocket-borealis.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-pocket-borealis.jpg',
         title: 'Pocket <br> borealis'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-curiosity.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-curiosity.jpg',
         title: 'The <br> curiosity'
     },
 
     {
         imgSrc: 'assets/img/mobile/image-fisheye.jpg',
+        imgSrcDesk: 'assets/img/desktop/image-fisheye.jpg',
         title: 'Make it <br> fisheye'
     }
 ];
@@ -172,7 +199,10 @@ function createItemsCreations(objs){
             <li class="creations__item">
                 <a href="#!" class="creations__item-link">
                     <h3 class="creations__item-title">${obj.title}</h3>
-                    <img class="creations__item-img" src="${obj.imgSrc}" alt="${obj.title}">
+                    <picture>
+                        <source srcset="${obj.imgSrcDesk}" media="(min-width: 1024px)">
+                        <img class="creations__item-img" src="${obj.imgSrc}" alt="${obj.title}">
+                    </picture>
                 </a>
             </li>
         `
@@ -186,13 +216,16 @@ function createItemsCreations(objs){
 function createSectionCreations(){
     return `
         <section class="main__creations">
-            <h2 class="creations__title title">Our creations</h2>
+            <div class="creations__header">
+                <h2 class="creations__title title">Our creations</h2>
+                <button class="creations__button creations__button--desktop" aria-label="Ver todos os items">See all</button>
+            </div>
 
             <ul class="creations__list">
                 ${createItemsCreations(itemsCreations)}
             </ul>
 
-            <button class="creations__button" aria-label="Ver todos os items">See all</button>
+            <button class="creations__button creations__button--mobile" aria-label="Ver todos os items">See all</button>
         </section>
     `;
 }

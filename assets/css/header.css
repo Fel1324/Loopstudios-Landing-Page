@@ -13,6 +13,10 @@
     height: 100%;
 }
 
+.header__navigation{
+    display: none;
+}
+
 #header__content div:first-child{
     align-self: flex-start;
 
@@ -28,13 +32,54 @@
 
     max-width: 43.5rem;
 
-    margin-inline: auto;
-
     padding: 2rem;
 }
 
 .header__title{
     color: var(--primary-color);
 
-    font-size: 4rem;
+    font-size: 3.4rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .header{
+        background: url('../img/desktop/image-hero.jpg') no-repeat top center / cover;
+
+        height: auto;
+    }
+
+    #header__content{
+        padding-top: 6rem;
+        padding-bottom: 12rem;
+
+        row-gap: 10rem;
+    }
+
+    .header__button{
+        display: none;
+    }
+    
+    .header__navigation{
+        display: block;
+    }
+
+    .header__list{
+        display: flex;
+        align-items: center;
+        gap: 3.2rem;
+    }
+
+    .header__link{
+        color: var(--primary-color);
+    }
+
+    #header__content div:last-child{
+        max-width: 60rem;
+    
+        padding: 4rem;
+    }
+
+    .header__title{
+        font-size: 7rem;
+    }
 }
