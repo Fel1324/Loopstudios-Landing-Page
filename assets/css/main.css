@@ -97,7 +97,7 @@
     font-family: var(--main-font);
     letter-spacing: .4rem;
 
-    border: .1rem solid var(--secondary-color);
+    border: .2rem solid var(--secondary-color);
 
     padding-block: 1rem;
     padding-inline: 4rem;
@@ -209,7 +209,7 @@
 @media screen and (min-width: 1366px) {
     /* INTRODUCTION */
     .introduction__content{
-        grid-template-columns: 5fr .75fr;
+        grid-template-columns: 2fr 1fr;
         gap: 0;
     }
 
@@ -218,26 +218,22 @@
         z-index: 0;
     }
 
-    .introduction__img{
-        width: 100%;
-    }
-
     .introduction__col-b{
         background-color: var(--primary-color);
 
         position: relative;
         z-index: 1;
-        transform: translateX(-28%);
+        transform: translateX(-34%);
+
+        padding-top: 8rem;
 
         align-self: self-end;
-
-        padding-top: 6.4rem;
-        padding-left: 10rem;
     }
 
     .introduction__title,
     .introduction__paragraph{
         width: 45rem;
+        transform: translateX(22%);
     }
 
     /* CREATIONS */
