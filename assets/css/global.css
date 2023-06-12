@@ -46,18 +46,14 @@ html, body{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+
+    cursor: pointer;
 }
 
 .container{
     width: 100%;
 
-    margin-inline: auto;
     padding-inline: 3rem;
-}
-
-.logo{
-    width: 18rem;
 }
 
 .title{
@@ -66,19 +62,34 @@ html, body{
     font-size: 3.2rem;
 }
 
-.button-open img,
-.button-close img{
-    width: 2.8rem;
+.list-item{
+    width: fit-content;
+}
+
+.link-hover::after{
+    content: '';
+
+    display: block;
+
+    height: .2rem;
+    width: 0;
+
+    margin-top: .8rem;
+    margin-inline: auto;
+
+    background: var(--primary-color);
+
+    transition: width .3s ease-in-out;
+}
+
+.link-hover:hover::after{
+    width: 100%;
 }
 
 button{
     background: none;
 
     cursor: pointer;
-}
-
-a{
-    text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -101,9 +112,15 @@ ul{
     list-style: none;
 }
 
+a{
+    text-decoration: none;
+}
+
 @media screen and (min-width: 1024px) {
     .container{
         max-width: 1200px;
+
+        margin-inline: auto;
     }
 
     .title{

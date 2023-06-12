@@ -28,14 +28,13 @@ function createLinksSite(links, classNameItem, classNameLink){
 
     links.forEach(link => {
         linkValue += `
-            <li class="${defineClassNameItemSite(classNameItem)}">
-                <a href="#!" class="${defineClassNameLinkSite(classNameLink)}">${link}</a>
+            <li class="${defineClassNameItemSite(classNameItem)} list-item">
+                <a href="#!" class="${defineClassNameLinkSite(classNameLink)} link-hover">${link}</a>
             </li>
         `;
     });
 
-    const htmlLinkValue = 0;
-    return htmlLinkValue.innerHTML = linkValue;
+    return linkValue;
 }
 // -----------------------
 
@@ -206,10 +205,9 @@ function createItemsCreations(objs){
                 </a>
             </li>
         `
-    }); 
+    });
 
-    const htmlObjValue = 0;
-    return htmlObjValue.innerHTML = objValue;
+    return objValue;
 }
 
 // CREATE SECONDARY SECTION
@@ -267,15 +265,14 @@ function createSocialLinksFooter(socialLinks){
     socialLinks.forEach(socialLink => {
         socialLinkValue += `
             <li class="social-links__item">
-                <a href="#!" class="social-links__link">
+                <a href="#!" class="social-links__link link-hover">
                     <img class="social-links__img" src="${socialLink.src}" alt="${socialLink.alt}">
                 </a>
             </li>
         `;
     });
 
-    const htmlSocialLinkValue = 0;
-    return htmlSocialLinkValue.innerHTML = socialLinkValue;
+    return socialLinkValue;
 }
 
 // CREATE FOOTER CONTENT

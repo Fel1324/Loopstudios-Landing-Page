@@ -8,7 +8,6 @@
     top: 0;
     right: 0;
     transform: translateX(100%);
-    z-index: 2;
 
     overflow: auto;
 
@@ -32,15 +31,14 @@
     justify-content: space-between;
     align-items: center;
 
-    align-self: flex-start;
+    align-self: self-start;
 }
 
 .menu__list{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    row-gap: 2rem;
 
-    align-self: flex-start;
+    align-self: self-start;
 }
 
 .menu__link{
@@ -48,7 +46,6 @@
 
     text-transform: uppercase;
     font-family: var(--title-font);
-    font-weight: 400;
     font-size: 2.2rem;
 }
 
